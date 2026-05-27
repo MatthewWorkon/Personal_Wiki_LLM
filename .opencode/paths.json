@@ -1,0 +1,35 @@
+{
+  "_description": "全系统路径配置中心。所有技能脚本从此文件读取路径，严禁硬编码。路径相对于 Vault 根目录。",
+  "vault_root": ".",
+  "layers": {
+    "raw_materials": {
+      "root": "00_Raw_Materials",
+      "subdirs": ["Books", "Papers", "WebClips"],
+      "permission": "read_only"
+    },
+    "wiki_grid": {
+      "root": "10_Wiki_Grid",
+      "subdirs": ["00_Anchors", "Concepts", "Entities", "Syntheses"],
+      "permission": "read_write"
+    },
+    "templates": {
+      "root": "20_Templates",
+      "concept": "20_Templates/Template_Concept.md",
+      "entity": "20_Templates/Template_Entity.md",
+      "digest": "20_Templates/Template_Digest.md"
+    },
+    "daily_stream": {
+      "root": "30_Daily_Stream",
+      "logs_pattern": "30_Daily_Stream/{year}/{month}/Logs/",
+      "digests_pattern": "30_Daily_Stream/{year}/{month}/Digests/",
+      "archives": "30_Daily_Stream/Archives",
+      "current_year": "2026",
+      "month_format": "MM_Mon"
+    },
+    "soul_archive": "soul_profile_archive"
+  },
+  "core_files": {
+    "constitution": "opencode.md",
+    "soul_profile": "soul_profile.md"
+  }
+}

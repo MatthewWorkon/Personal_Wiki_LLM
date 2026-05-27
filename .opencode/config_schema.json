@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "My_LLM_Wiki Configuration Schema",
+  "description": "健康检查锚点：定义 config.json 的合法结构，用于年度兼容性巡检。",
+  "type": "object",
+  "required": ["model", "vault", "skills", "retrieval", "archive"],
+  "properties": {
+    "model": {
+      "type": "object",
+      "required": ["provider", "model_id"],
+      "properties": {
+        "provider": { "type": "string", "enum": ["deepseek", "openai", "anthropic"] },
+        "model_id": { "type": "string" },
+        "api_key": { "type": "string" },
+        "base_url": { "type": "string", "format": "uri" },
+        "max_tokens": { "type": "integer", "minimum": 1, "maximum": 131072 },
+        "temperature": { "type": "number", "minimum": 0, "maximum": 2 }
+      }
+    },
+    "vault": {
+      "type": "object",
+      "required": ["root_path", "encoding"],
+      "properties": {
+        "root_path": { "type": "string" },
+        "encoding": { "type": "string", "enum": ["utf-8"] },
+        "frontmatter_format": { "type": "string", "enum": ["yaml", "toml", "json"] }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "required": ["enabled"],
+      "properties": {
+        "enabled": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "required": ["default_weights", "hot_window_days"],
+      "properties": {
+        "default_weights": {
+          "type": "object",
+          "required": ["hot", "warm", "cold"],
+          "properties": {
+            "hot": { "type": "number", "minimum": 0, "maximum": 1 },
+            "warm": { "type": "number", "minimum": 0, "maximum": 1 },
+            "cold": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "hot_window_days": { "type": "integer", "minimum": 1 },
+        "cross_year_window_days": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "required": ["soul_profile_history_years"],
+      "properties": {
+        "soul_profile_history_years": { "type": "integer", "minimum": 1 },
+        "auto_archive_on_crystallize": { "type": "boolean" }
+      }
+    }
+  }
+}

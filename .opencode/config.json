@@ -1,0 +1,68 @@
+{
+  "model": {
+    "provider": "deepseek",
+    "model_id": "deepseek-v4-pro",
+    "api_key": "${DEEPSEEK_API_KEY}",
+    "base_url": "https://api.deepseek.com/v1",
+    "max_tokens": 8192,
+    "temperature": 0.7
+  },
+  "vault": {
+    "root_path": ".",
+    "encoding": "utf-8",
+    "frontmatter_format": "yaml"
+  },
+  "skills": {
+    "enabled": [
+      "hybrid_search.py",
+      "memory_router.py",
+      "ast_patcher.py",
+      "ripple_weave.py",
+      "graph_entropy.py",
+      "conflict_resolver.py",
+      "eod_digest.py",
+      "soul_updater.py",
+      "yearly_crystallize.py",
+      "log_append.py",
+      "morning_sync.py",
+      "corpus_ingest.py",
+      "anchor_weekly.py",
+      "reminder_check.py",
+      "link_validator.py",
+      "health_check.py"
+    ]
+  },
+  "retrieval": {
+    "default_weights": {
+      "hot": 0.70,
+      "warm": 0.20,
+      "cold": 0.10
+    },
+    "hot_window_days": 14,
+    "cross_year_window_days": 7
+  },
+  "digest": {
+    "auto_remind_after_rounds": 10,
+    "morning_sync_days": 5,
+    "instructions": {
+      "today": "digest",
+      "specific_date": "digest YYYY-MM-DD",
+      "week": "digest week",
+      "month": "digest month"
+    }
+  },
+  "archive": {
+    "soul_profile_history_years": 2,
+    "auto_archive_on_crystallize": true
+  },
+  "reminder": {
+    "auto_check_on_startup": true,
+    "intervals": {
+      "digest_daily": 1,
+      "anchor_weekly": 14,
+      "soul_updater_weekly": 7,
+      "yearly_crystallize_yearly": 365,
+      "graph_entropy_monthly": 30
+    }
+  }
+}
